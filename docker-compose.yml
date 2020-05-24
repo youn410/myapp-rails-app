@@ -1,0 +1,22 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    container_name: rails_mysql
+    env_file:
+      - ./.docker-compose-env/db.env
+    ports:
+      - "3306:3306"
+
+  web:
+    build: .
+    container_name: rails_web
+    env_file:
+      - ./.docker-compose-env/web.env
+    command: rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - ./src:/app
+    ports:
+      - "3000:3000"
+    links:
+      - db
