@@ -11,3 +11,7 @@ $ tree
     ├── Gemfile
     └── Gemfile.lock
 ```
+rails newを実行すると、src下にファイル群が生成される
+```
+$ docker-compose run web rails new . --force --database=mysql --skip-bundles
+```
